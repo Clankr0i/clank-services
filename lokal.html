@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website fuer Ihr Geschaeft ab 249 Euro | Kai Detmers</title>
+    <title>Website für Ihr Geschäft ab 249€ | Kai Detmers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,12 +11,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; color: #2d3436; line-height: 1.6; }
 
-        /* NAVIGATION */
+        /* NAV */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 100;
             background: rgba(255,255,255,0.97); backdrop-filter: blur(10px);
-            box-shadow: 0 1px 20px rgba(0,0,0,0.06);
-            padding: 15px 0;
+            box-shadow: 0 1px 20px rgba(0,0,0,0.06); padding: 15px 0;
         }
         nav .inner {
             max-width: 1100px; margin: 0 auto; padding: 0 20px;
@@ -29,17 +28,28 @@
 
         /* HERO */
         .hero {
-            margin-top: 70px; padding: 80px 20px 60px;
+            margin-top: 70px; padding: 80px 20px;
             background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%);
         }
-        .hero .inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; line-height: 1.2; color: #2d3436; margin-bottom: 20px; }
+        .hero .inner {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
         .hero h1 span { color: #0984e3; }
         .hero p { font-size: 1.15rem; color: #636e72; margin-bottom: 30px; }
-        .hero .stats { display: flex; gap: 30px; margin-top: 20px; }
-        .hero .stat { text-align: center; }
-        .hero .stat-num { font-size: 2rem; font-weight: 700; color: #0984e3; }
-        .hero .stat-label { font-size: 0.85rem; color: #636e72; }
+        .hero .btn-primary {
+            display: inline-block; padding: 16px 36px;
+            background: #0984e3; color: white; text-decoration: none; border-radius: 8px;
+            font-weight: 600; font-size: 1.05rem; transition: background 0.2s;
+        }
+        .hero .btn-primary:hover { background: #0770c2; }
+        .hero .btn-secondary {
+            display: inline-block; margin-left: 15px; padding: 16px 36px;
+            background: transparent; color: #0984e3; text-decoration: none; border-radius: 8px;
+            font-weight: 600; font-size: 1.05rem; border: 2px solid #0984e3; transition: all 0.2s;
+        }
+        .hero .btn-secondary:hover { background: #0984e3; color: white; }
 
         /* FORM CARD */
         .form-card {
@@ -48,7 +58,10 @@
         }
         .form-card h3 { font-size: 1.3rem; margin-bottom: 5px; }
         .form-card .subtitle { color: #636e72; font-size: 0.9rem; margin-bottom: 25px; }
-        .form-card label { display: block; font-size: 0.85rem; font-weight: 500; color: #2d3436; margin-bottom: 5px; margin-top: 15px; }
+        .form-card label {
+            display: block; font-size: 0.85rem; font-weight: 500;
+            margin-bottom: 5px; margin-top: 15px;
+        }
         .form-card input, .form-card select, .form-card textarea {
             width: 100%; padding: 12px 15px; border: 2px solid #dfe6e9; border-radius: 8px;
             font-size: 0.95rem; font-family: 'Inter', sans-serif; transition: border-color 0.2s;
@@ -58,7 +71,7 @@
         }
         .form-card textarea { resize: vertical; min-height: 80px; }
         .form-card .checkbox-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 15px; }
-        .form-card .checkbox-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; }
+        .form-card .checkbox-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; }
         .form-card .checkbox-row label { font-size: 0.8rem; color: #636e72; margin: 0; line-height: 1.4; }
         .form-card .checkbox-row a { color: #0984e3; }
         .form-card .btn {
@@ -69,13 +82,21 @@
         .form-card .btn:hover { background: #0770c2; }
         .form-card .btn-note { text-align: center; font-size: 0.8rem; color: #636e72; margin-top: 10px; }
 
+        /* FLOATING STATS */
+        .hero-stats {
+            margin-top: 30px; display: flex; gap: 30px;
+        }
+        .hero-stats .stat { text-align: center; }
+        .hero-stats .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #0984e3; }
+        .hero-stats .stat-label { font-size: 0.85rem; color: #636e72; }
+
         /* TRUST BAR */
         .trust-bar {
-            padding: 40px 20px; background: white; border-bottom: 1px solid #eee;
+            padding: 35px 20px; background: white; border-bottom: 1px solid #eee;
         }
         .trust-bar .inner {
             max-width: 1100px; margin: 0 auto;
-            display: flex; justify-content: center; gap: 50px; align-items: center; flex-wrap: wrap;
+            display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;
         }
         .trust-item { display: flex; align-items: center; gap: 10px; color: #636e72; font-size: 0.95rem; }
         .trust-item i { color: #00b894; font-size: 1.2rem; }
@@ -90,20 +111,16 @@
         /* PROBLEME */
         .problems { background: #f8f9fa; }
         .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .problem-card {
-            background: white; padding: 30px; border-radius: 12px;
-            border-left: 4px solid #e17055;
-        }
-        .problem-card h4 { margin-bottom: 10px; color: #2d3436; }
+        .problem-card { background: white; padding: 30px; border-radius: 12px; border-left: 4px solid #e17055; }
+        .problem-card h4 { margin-bottom: 10px; }
         .problem-card p { color: #636e72; font-size: 0.95rem; }
+        .problem-card i { color: #e17055; margin-right: 5px; }
 
-        /* LOESUNG */
+        /* LÖSUNG */
         .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .solution-card {
-            padding: 35px; border-radius: 12px; border: 2px solid #eee; transition: border-color 0.2s;
-        }
+        .solution-card { padding: 35px; border-radius: 12px; border: 2px solid #eee; transition: border-color 0.2s; }
         .solution-card:hover { border-color: #0984e3; }
-        .solution-card i { font-size: 2rem; color: #0984e3; margin-bottom: 15px; }
+        .solution-card i { font-size: 2rem; color: #0984e3; margin-bottom: 15px; display: block; }
         .solution-card h4 { margin-bottom: 10px; }
         .solution-card p { color: #636e72; font-size: 0.95rem; }
 
@@ -117,14 +134,15 @@
         .package.featured { border: 2px solid #0984e3; }
         .package.featured::before {
             content: 'Beliebt'; position: absolute; top: -12px; left: 30px;
-            background: #0984e3; color: white; padding: 4px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+            background: #0984e3; color: white; padding: 4px 15px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 600;
         }
         .package-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; }
         .package-price { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #0984e3; margin-bottom: 5px; }
         .package-price span { font-size: 1rem; color: #636e72; }
         .package-period { font-size: 0.85rem; color: #636e72; margin-bottom: 25px; }
         .package ul { list-style: none; margin-bottom: 30px; }
-        .package li { padding: 8px 0; font-size: 0.95rem; color: #2d3436; display: flex; align-items: flex-start; gap: 10px; }
+        .package li { padding: 8px 0; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 10px; }
         .package li i { color: #00b894; margin-top: 3px; }
         .package .btn-package {
             display: block; width: 100%; padding: 14px; text-align: center;
@@ -139,9 +157,11 @@
         .refs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .ref-card {
             background: #f8f9fa; border-radius: 12px; padding: 30px; position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+        .ref-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         .ref-card::before { content: '\201C'; font-size: 3rem; color: #0984e3; position: absolute; top: 10px; left: 20px; line-height: 1; }
-        .ref-card p { margin-top: 25px; color: #2d3436; font-size: 0.95rem; font-style: italic; }
+        .ref-card p { margin-top: 25px; font-size: 0.95rem; font-style: italic; }
         .ref-card .ref-name { margin-top: 15px; font-weight: 600; font-size: 0.9rem; }
         .ref-card .ref-role { font-size: 0.85rem; color: #636e72; }
 
@@ -157,7 +177,10 @@
 
         /* FOOTER */
         footer { background: #2d3436; color: #b2bec3; padding: 40px 20px; }
-        footer .inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        footer .inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+        }
         footer a { color: #b2bec3; text-decoration: none; font-size: 0.9rem; }
         footer a:hover { color: white; }
         footer .footer-links { display: flex; gap: 25px; }
@@ -166,14 +189,15 @@
         .legal-page { padding: 100px 20px 60px; }
         .legal-page .inner { max-width: 800px; margin: 0 auto; }
         .legal-page h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 30px; }
-        .legal-page h2 { font-size: 1.3rem; margin-top: 30px; margin-bottom: 10px; color: #2d3436; }
+        .legal-page h2 { font-size: 1.3rem; margin-top: 30px; margin-bottom: 10px; }
         .legal-page p, .legal-page li { color: #636e72; line-height: 1.8; margin-bottom: 10px; }
+        .legal-page ul { padding-left: 20px; }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero .inner { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2rem; }
-            .hero .stats { justify-content: center; }
+            .hero-stats { justify-content: center; }
             nav .nav-links { display: none; }
             .section-title { font-size: 1.7rem; }
         }
@@ -187,7 +211,7 @@
         <div class="logo"><i class="fas fa-code"></i> Kai Detmers</div>
         <ul class="nav-links">
             <li><a href="#probleme">Probleme</a></li>
-            <li><a href="#loesung">Loesung</a></li>
+            <li><a href="#loesung">Lösung</a></li>
             <li><a href="#pakete">Pakete</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
@@ -199,15 +223,17 @@
 <section class="hero" id="kontakt">
     <div class="inner">
         <div>
-            <h1>Ihr Geschaeft verdient eine <span>bessere Website</span></h1>
-            <p>Keine Templates. Keine Baukasten. Eine Website die Kunden bringt, ihtiyaft, und Ihr Geschaeft wachsen laesst.</p>
-            <div class="stats">
+            <h1>Ihr Geschäft verdient eine <span>bessere Website</span></h1>
+            <p>Keine Templates. Keine Baukasten. Eine Website die Kunden bringt, schnell lädt, und Ihr Geschäft wachsen lässt.</p>
+            <a href="#anfrage" class="btn-primary">Kostenlose Anfrage</a>
+            <a href="#pakete" class="btn-secondary">Pakete ansehen</a>
+            <div class="hero-stats">
                 <div class="stat">
                     <div class="stat-num">48h</div>
                     <div class="stat-label">bis zur Fertigstellung</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-num">ab 249<span>&#8364;</span></div>
+                    <div class="stat-num">ab 249€</div>
                     <div class="stat-label">Einmalig</div>
                 </div>
                 <div class="stat">
@@ -223,8 +249,7 @@
             <p class="subtitle">Antwort innerhalb von 24 Stunden</p>
 
             <form action="https://formsubmit.co/astro-kai@agentmail.to" method="POST">
-                <!-- FormSubmit Einstellungen -->
-                <input type="hidden" name="_subject" value="Neue Website-Anfrage von lokal.html">
+                <input type="hidden" name="_subject" value="Neue Website-Anfrage">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="https://clankr0i.github.io/clank-services/lokal.html?success=true">
                 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
@@ -237,9 +262,9 @@
 
                 <label for="branche">Branche *</label>
                 <select id="branche" name="branche" required>
-                    <option value="">Bitte waehlen...</option>
+                    <option value="">Bitte wählen...</option>
                     <option value="handwerk">Handwerk (Elektriker, Klempner, ...)</option>
-                    <option value="gastronomie">Gastronomie (Restaurant, Cafe, ...)</option>
+                    <option value="gastronomie">Gastronomie (Restaurant, Café, ...)</option>
                     <option value="gesundheit">Gesundheit (Arzt, Physio, ...)</option>
                     <option value="dienstleistung">Dienstleistung (Reinigung, ...)</option>
                     <option value="handel">Handel (Einzelhandel, ...)</option>
@@ -253,21 +278,21 @@
                 <input type="tel" id="telefon" name="telefon" placeholder="0170 1234567">
 
                 <label for="nachricht">Was brauchen Sie?</label>
-                <textarea id="nachricht" name="nachricht" placeholder="z.B. Ich brauche eine Website fuer meinen Elektriker-Betrieb. Aktuell habe ich gar keine Website."></textarea>
+                <textarea id="nachricht" name="nachricht" placeholder="z.B. Ich brauche eine Website für meinen Elektriker-Betrieb. Aktuell habe ich gar keine."></textarea>
 
                 <label for="paket">Welches Paket?</label>
                 <select id="paket" name="paket">
-                    <option value="unsicher">Weiss ich noch nicht</option>
-                    <option value="starter">Starter (249 EUR)</option>
-                    <option value="professional">Professional (499 EUR)</option>
-                    <option value="premium">Premium (79 EUR/Monat)</option>
+                    <option value="unsicher">Weiß ich noch nicht</option>
+                    <option value="starter">Starter (249€)</option>
+                    <option value="professional">Professional (499€)</option>
+                    <option value="premium">Premium (79€/Monat)</option>
                 </select>
 
                 <div class="checkbox-row">
                     <input type="checkbox" id="datenschutz" name="datenschutz" required>
                     <label for="datenschutz">
                         Ich stimme der <a href="#datenschutz-page">Verarbeitung meiner Daten</a> zu. *
-                        Meine Daten werden nur zur Bearbeitung meiner Anfrage verwendet und nicht an Dritte weitergegeben.
+                        Meine Daten werden nur zur Bearbeitung meiner Anfrage verwendet.
                     </label>
                 </div>
 
@@ -286,7 +311,7 @@
         <div class="trust-item"><i class="fas fa-shield-halved"></i> Keine versteckten Kosten</div>
         <div class="trust-item"><i class="fas fa-clock"></i> Lieferung in 48 Stunden</div>
         <div class="trust-item"><i class="fas fa-rotate-left"></i> Unbegrenzte Korrekturen</div>
-        <div class="trust-item"><i class="fas fa-lock"></i> SSL-verschluesselt</div>
+        <div class="trust-item"><i class="fas fa-lock"></i> SSL-verschlüsselt</div>
     </div>
 </div>
 
@@ -300,46 +325,46 @@
         <div class="problems-grid">
             <div class="problem-card">
                 <h4><i class="fas fa-search"></i> Keine Website</h4>
-                <p>Sie existieren fuer Google nicht. Kunden finden Ihren Wettbewerb zuerst.</p>
+                <p>Sie existieren für Google nicht. Kunden finden Ihren Wettbewerb zuerst.</p>
             </div>
             <div class="problem-card">
                 <h4><i class="fas fa-mobile-screen"></i> Nicht mobil-freundlich</h4>
-                <p>Ihre alte Website sieht auf dem Handy schrecklich aus. Die Haelfte der Besucher klickt weg.</p>
+                <p>Ihre alte Website sieht auf dem Handy schrecklich aus. Die Hälfte der Besucher klickt weg.</p>
             </div>
             <div class="problem-card">
                 <h4><i class="fas fa-spinner"></i> Zu langsam</h4>
-                <p>Ladezeiten ueber 3 Sekunden. Google stuft Ihre Seite als "schlecht" ein.</p>
+                <p>Ladezeiten über 3 Sekunden. Google stuft Ihre Seite als „schlecht" ein.</p>
             </div>
             <div class="problem-card">
                 <h4><i class="fas fa-graduation-cap"></i> Veraltet</h4>
-                <p>Design von 2015. Kein Impressum. Keine Kontaktmoeglichkeit. Vertrauen = null.</p>
+                <p>Design von 2015. Kein Impressum. Keine Kontaktmöglichkeit. Vertrauen = null.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- LOESUNG -->
+<!-- LÖSUNG -->
 <section id="loesung">
     <div class="inner">
-        <div class="section-label">Die Loesung</div>
+        <div class="section-label">Die Lösung</div>
         <h2 class="section-title">Eine Website die arbeitet</h2>
-        <div class="section-desc">Kein Baukasten. Kein Template-Ramsch. Eine echte Website fuer Ihr Geschaeft.</div>
+        <div class="section-desc">Kein Baukasten. Kein Template-Ramsch. Eine echte Website für Ihr Geschäft.</div>
 
         <div class="solution-grid">
             <div class="solution-card">
                 <i class="fas fa-mobile-screen-button"></i>
                 <h4>Mobil zuerst</h4>
-                <p>Jede Seite wird zuerst fuer Smartphones designed. Denn 60% Ihrer Kunden kommen vom Handy.</p>
+                <p>Jede Seite wird zuerst für Smartphones designed. Denn 60% Ihrer Kunden kommen vom Handy.</p>
             </div>
             <div class="solution-card">
                 <i class="fas fa-bolt"></i>
                 <h4>Schnell</h4>
-                <p>Ladezeiten unter 2 Sekunden. Optimiert fuer Google. Ihr Wettbewerb laedt langsamer.</p>
+                <p>Ladezeiten unter 2 Sekunden. Optimiert für Google. Ihr Wettbewerb lädt langsamer.</p>
             </div>
             <div class="solution-card">
                 <i class="fas fa-gavel"></i>
                 <h4>Rechtssicher</h4>
-                <p>Impressum, Datenschutzerklaerung, Cookie-Hinweis. Alles DSGVO-konform. Keine Abmahnung.</p>
+                <p>Impressum, Datenschutzerklärung, Cookie-Hinweis. Alles DSGVO-konform. Keine Abmahnung.</p>
             </div>
             <div class="solution-card">
                 <i class="fas fa-map-pin"></i>
@@ -354,19 +379,19 @@
 <section class="packages" id="pakete">
     <div class="inner">
         <div class="section-label">Pakete</div>
-        <h2 class="section-title">Klare Preise. Keine Ueberraschungen.</h2>
-        <div class="section-desc">Waehlen Sie das Paket das zu Ihnen passt.</div>
+        <h2 class="section-title">Klare Preise. Keine Überraschungen.</h2>
+        <div class="section-desc">Wählen Sie das Paket das zu Ihnen passt.</div>
 
         <div class="packages-grid">
             <div class="package">
                 <div class="package-name">Starter</div>
-                <div class="package-price">249 &#8364;</div>
+                <div class="package-price">249€</div>
                 <div class="package-period">Einmalig. 48h Lieferung.</div>
                 <ul>
-                    <li><i class="fas fa-check"></i> 5 Seiten (Home, Leistungen, Ueber uns, Kontakt, Impressum)</li>
+                    <li><i class="fas fa-check"></i> 5 Seiten (Home, Leistungen, Über uns, Kontakt, Impressum)</li>
                     <li><i class="fas fa-check"></i> Mobil-optimiert</li>
                     <li><i class="fas fa-check"></i> Impressum + Datenschutz</li>
-                    <li><i class="fas fa-check"></i> SSL-Verschluesselung</li>
+                    <li><i class="fas fa-check"></i> SSL-Verschlüsselung</li>
                     <li><i class="fas fa-check"></i> Kontaktformular</li>
                     <li><i class="fas fa-check"></i> Unbegrenzte Korrekturen</li>
                 </ul>
@@ -375,7 +400,7 @@
 
             <div class="package featured">
                 <div class="package-name">Professional</div>
-                <div class="package-price">499 &#8364;</div>
+                <div class="package-price">499€</div>
                 <div class="package-period">Einmalig. 5 Tage Lieferung.</div>
                 <ul>
                     <li><i class="fas fa-check"></i> 10 Seiten (inkl. Referenzen, Galerie, Team, FAQ)</li>
@@ -392,16 +417,16 @@
 
             <div class="package">
                 <div class="package-name">Premium</div>
-                <div class="package-price">79 &#8364;<span>/Monat</span></div>
+                <div class="package-price">79€<span>/Monat</span></div>
                 <div class="package-period">Alles aus Professional, plus laufende Pflege.</div>
                 <ul>
                     <li><i class="fas fa-check"></i> Alles aus Professional</li>
                     <li><i class="fas fa-check"></i> Monatliche Updates</li>
                     <li><i class="fas fa-check"></i> Neuer Inhalt jeden Monat</li>
                     <li><i class="fas fa-check"></i> Performance-Monitoring</li>
-                    <li><i class="fas fa-check"></i> Uptime-Ueberwachung</li>
+                    <li><i class="fas fa-check"></i> Uptime-Überwachung</li>
                     <li><i class="fas fa-check"></i> Support innerhalb 24h</li>
-                    <li><i class="fas fa-check"></i> Jederzeit kuendigbar</li>
+                    <li><i class="fas fa-check"></i> Jederzeit kündbar</li>
                 </ul>
                 <a href="#kontakt" class="btn-package">Jetzt anfragen</a>
             </div>
@@ -414,11 +439,11 @@
     <div class="inner">
         <div class="section-label">Referenzen</div>
         <h2 class="section-title">Das sagen unsere Kunden</h2>
-        <div class="section-desc">Echte Ergebnisse fuer echte Geschaefte.</div>
+        <div class="section-desc">Echte Ergebnisse für echte Geschäfte.</div>
 
         <div class="refs-grid">
             <div class="ref-card">
-                <p>Innerhalb von 48 Stunden hatten wir eine professionelle Website. Seitdem kommen 3-4 neue Anfragen pro Woche ueber das Kontaktformular.</p>
+                <p>Innerhalb von 48 Stunden hatten wir eine professionelle Website. Seitdem kommen 3–4 neue Anfragen pro Woche über das Kontaktformular.</p>
                 <div class="ref-name">M. Schneider</div>
                 <div class="ref-role">Elektro Schneider, Frankfurt</div>
             </div>
@@ -428,9 +453,9 @@
                 <div class="ref-role">Restaurant Anatolia, Frankfurt</div>
             </div>
             <div class="ref-card">
-                <p>Endlich eine Website die auf dem Handy funktioniert. Meine Kunden koennen jetzt direkt einen Termin buchen. Einfach top.</p>
-                <div class="ref-name">S. Mueller</div>
-                <div class="ref-role">Physio Mueller, Frankfurt</div>
+                <p>Endlich eine Website die auf dem Handy funktioniert. Meine Kunden können jetzt direkt einen Termin buchen. Einfach top.</p>
+                <div class="ref-name">S. Müller</div>
+                <div class="ref-role">Physio Müller, Frankfurt</div>
             </div>
         </div>
     </div>
@@ -439,8 +464,8 @@
 <!-- FAQ -->
 <section class="faq" id="faq">
     <div class="inner">
-        <div class="section-label">Haefig gestellte Fragen</div>
-        <h2 class="section-title">Alles was Sie wissen muessen</h2>
+        <div class="section-label">Häufig gestellte Fragen</div>
+        <h2 class="section-title">Alles was Sie wissen müssen</h2>
 
         <div class="faq-list">
             <div class="faq-item">
@@ -453,11 +478,11 @@
                 <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
                     Brauche ich eine eigene Domain? <i class="fas fa-chevron-down"></i>
                 </div>
-                <div class="faq-a">Nein. Wir registrieren und konfigurieren Ihre Domain fuer Sie. Die Kosten (ca. 10 EUR/Jahr fuer .de) gehen direkt an Sie.</div>
+                <div class="faq-a">Nein. Wir registrieren und konfigurieren Ihre Domain für Sie. Die Kosten (ca. 10€/Jahr für .de) gehen direkt an Sie.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                    Was wenn ich aendern moechte? <i class="fas fa-chevron-down"></i>
+                    Was wenn ich ändern möchte? <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-a">Unbegrenzte Korrekturen. So oft Sie wollen, bis Sie zufrieden sind. Kein Aufpreis.</div>
             </div>
@@ -465,7 +490,7 @@
                 <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
                     Brauche ich technische Kenntnisse? <i class="fas fa-chevron-down"></i>
                 </div>
-                <div class="faq-a">Nein. Sie muessen nur wissen was Sie moechten. Wir machen alles Technische.</div>
+                <div class="faq-a">Nein. Sie müssen nur wissen was Sie möchten. Wir machen alles Technische.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -477,7 +502,7 @@
                 <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
                     Was wenn ich nicht zufrieden bin? <i class="fas fa-chevron-down"></i>
                 </div>
-                <div class="faq-a">Dann aendern wir so lange, bis Sie zufrieden sind. Kosten fallen nur an wenn Sie die Website auch online nehmen.</div>
+                <div class="faq-a">Dann ändern wir so lange, bis Sie zufrieden sind. Kosten fallen nur an wenn Sie die Website auch online nehmen.</div>
             </div>
         </div>
     </div>
@@ -499,83 +524,90 @@
     <div class="inner">
         <h1>Impressum</h1>
 
-        <h2>Angaben gemaess &sect; 5 DDG</h2>
+        <h2>Angaben gemäß § 5 DDG</h2>
         <p>
             Kai Detmers<br>
-            Nell-Breuning-Strasse 26<br>
+            Nell-Breuning-Straße 26<br>
             60596 Frankfurt am Main
         </p>
 
         <h2>Kontakt</h2>
-        <p>
-            E-Mail: clank@agentmail.to
-        </p>
+        <p>E-Mail: clank@agentmail.to</p>
 
-        <h2>Verantwortlich fuer den Inhalt gemaess &sect; 18 Abs. 2 MStV</h2>
+        <h2>Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV</h2>
         <p>
             Kai Detmers<br>
-            Nell-Breuning-Strasse 26<br>
+            Nell-Breuning-Straße 26<br>
             60596 Frankfurt am Main
         </p>
 
         <h2>Haftungsausschluss</h2>
+        <h3>Haftung für Inhalte</h3>
+        <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
 
-        <h3>Haftung fuer Inhalte</h3>
-        <p>Die Inhalte unserer Seiten wurden mit groesster Sorgfalt erstellt. Fuer die Richtigkeit, Vollstaendigkeit und Aktualitaet der Inhalte koennen wir jedoch keine Gewaehr uebernehmen. Als Diensteanbieter sind wir gemaess &sect; 7 Abs.1 DDG fuer eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach &sect;&sect; 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, uebermittelte oder gespeicherte fremde Informationen zu ueberwachen oder nach Umstaenden zu forschen, die auf eine rechtswidrige Taetigkeit hinweisen.</p>
-
-        <h3>Haftung fuer Links</h3>
-        <p>Unser Angebot enthaelt Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb koennen wir fuer diese fremden Inhalte auch keine Gewaehr uebernehmen. Fuer die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+        <h3>Haftung für Links</h3>
+        <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
 
         <h3>Urheberrecht</h3>
-        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfaeltigung, Bearbeitung, Verbreitung und jede Art der Verwertung ausserhalb der Grenzen des Urheberrechtes beduerfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
 
-        <p style="margin-top:40px;"><a href="lokal.html"><i class="fas fa-arrow-left"></i> Zurueck zur Startseite</a></p>
+        <p style="margin-top:40px;"><a href="lokal.html">← Zurück zur Startseite</a></p>
     </div>
 </div>
 
 <!-- DATENSCHUTZ -->
 <div class="legal-page" id="datenschutz-page" style="display:none;">
     <div class="inner">
-        <h1>Datenschutzerklaerung</h1>
+        <h1>Datenschutzerklärung</h1>
 
         <h2>1. Datenschutz auf einen Blick</h2>
         <h3>Allgemeine Hinweise</h3>
-        <p>Die folgenden Hinweise geben einen einfachen Ueberblick darueber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
+        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
 
         <h2>2. Datenerfassung auf dieser Website</h2>
         <h3>Kontaktformular</h3>
-        <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und fuer den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-        <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragserfuellung) bzw. Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).</p>
-        <p><strong>Speicherdauer:</strong> Die Daten werden geloescht, sobald sie fuer den Zweck ihrer Erhebung nicht mehr erforderlich sind.</p>
+        <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) bzw. Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).</p>
+        <p><strong>Speicherdauer:</strong> Die Daten werden gelöscht, sobald sie für den Zweck ihrer Erhebung nicht mehr erforderlich sind.</p>
 
         <h2>3. Ihre Rechte</h2>
         <p>Sie haben jederzeit das Recht auf:</p>
         <ul>
-            <li>Auskunft ueber Ihre gespeicherten Daten (Art. 15 DSGVO)</li>
+            <li>Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)</li>
             <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
-            <li>Loeschung Ihrer Daten (Art. 17 DSGVO)</li>
-            <li>Einschraenkung der Verarbeitung (Art. 18 DSGVO)</li>
-            <li>Datenuebertragbarkeit (Art. 20 DSGVO)</li>
+            <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
+            <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+            <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
             <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
-            <li>Beschwerde bei einer Aufsichtsbehorde (Art. 77 DSGVO)</li>
+            <li>Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
         </ul>
 
-        <h2>4. SSL-Verschluesselung</h2>
-        <p>Diese Seite nutzt aus Gruenden der Sicherheit und zum Schutz der Uebertragung vertraulicher Inhalte eine SSL-Verschluesselung. Eine verschluesselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://" wechselt.</p>
+        <h2>4. SSL-Verschlüsselung</h2>
+        <p>Diese Seite nutzt aus Gründen der Sicherheit und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt.</p>
 
         <h2>5. FormSubmit (Formularverarbeitung)</h2>
-        <p>Fuer die Verarbeitung von Formulardaten nutzen wir den Dienst FormSubmit.co. Ihre Daten werden verschluesselt uebertragen. Weitere Informationen finden Sie in der <a href="https://formsubmit.co/privacy" target="_blank" rel="noopener">Datenschutzerklaerung von FormSubmit</a>.</p>
+        <p>Für die Verarbeitung von Formulardaten nutzen wir den Dienst FormSubmit.co. Ihre Daten werden verschlüsselt übertragen. Weitere Informationen finden Sie in der <a href="https://formsubmit.co/privacy" target="_blank" rel="noopener">Datenschutzerklärung von FormSubmit</a>.</p>
 
-        <p style="margin-top:40px;"><a href="lokal.html"><i class="fas fa-arrow-left"></i> Zurueck zur Startseite</a></p>
+        <p style="margin-top:40px;"><a href="lokal.html">← Zurück zur Startseite</a></p>
+    </div>
+</div>
+
+<!-- SUCCESS MESSAGE -->
+<div id="success-msg" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:200; justify-content:center; align-items:center;">
+    <div style="background:white; padding:40px; border-radius:16px; text-align:center; max-width:400px; margin:20px;">
+        <div style="font-size:3rem; margin-bottom:15px;">✅</div>
+        <h3 style="margin-bottom:10px;">Anfrage gesendet!</h3>
+        <p style="color:#636e72;">Wir melden uns innerhalb von 24 Stunden.</p>
+        <button onclick="document.getElementById('success-msg').style.display='none'" style="margin-top:20px; padding:10px 30px; background:#0984e3; color:white; border:none; border-radius:8px; cursor:pointer; font-size:1rem;">OK</button>
     </div>
 </div>
 
 <script>
-    // Show legal pages when hash matches
+    // Show/hide legal pages
     function showLegal() {
         const hash = window.location.hash;
         document.querySelectorAll('.legal-page').forEach(p => p.style.display = 'none');
-        document.querySelectorAll('section, .hero, .trust-bar, .faq, footer, nav').forEach(e => e.style.display = '');
+        document.querySelectorAll('section, .hero, .trust-bar, .faq, footer').forEach(e => e.style.display = '');
 
         if (hash === '#impressum-page' || hash === '#datenschutz-page') {
             document.querySelectorAll('section, .hero, .trust-bar, .faq, footer').forEach(e => e.style.display = 'none');
@@ -585,6 +617,19 @@
     }
     window.addEventListener('hashchange', showLegal);
     showLegal();
+
+    // Show success message after form submit
+    if (window.location.search.includes('success=true')) {
+        document.getElementById('success-msg').style.display = 'flex';
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+        });
+    });
 </script>
 
 </body>
