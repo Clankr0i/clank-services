@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kostenlose Webseiten-Analyse | Clank Services</title>
+    <meta name="description" content="Schicken Sie uns Ihre URL und erhalten Sie innerhalb von 24 Stunden eine kostenlose Analyse mit konkreten Verbesserungsvorschlägen.">
+    <style>
+        :root { --bg: #0f0f23; --card: #1a1a2e; --accent: #ff6b35; --text: #e0e0e0; --muted: #888; --border: #2a2a4e; --green: #4caf50; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .hero { text-align: center; padding: 5rem 2rem 3rem; background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%); }
+        .hero h1 { font-size: 2.5rem; color: #fff; margin-bottom: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { font-size: 1.1rem; color: var(--muted); max-width: 550px; margin: 0 auto 2rem; }
+        .container { max-width: 700px; margin: 0 auto; padding: 2rem; }
+        h2 { color: var(--accent); font-size: 1.4rem; margin: 3rem 0 1.5rem; }
+        .form-card { background: var(--card); border-radius: 12px; padding: 2.5rem; border: 1px solid var(--border); margin: 2rem 0; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; color: #fff; margin-bottom: 0.5rem; font-weight: 500; }
+        .form-group input, .form-group select { width: 100%; padding: 0.8rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent); }
+        .form-group small { color: var(--muted); font-size: 0.85rem; display: block; margin-top: 0.3rem; }
+        .btn { display: inline-block; background: var(--accent); color: #fff; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-size: 1.1rem; font-weight: 600; border: none; cursor: pointer; width: 100%; text-align: center; }
+        .btn:hover { background: #e55a2b; }
+        .checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .check { background: var(--card); border-radius: 8px; padding: 1.2rem; border: 1px solid var(--border); }
+        .check .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .check h4 { color: #fff; margin-bottom: 0.3rem; font-size: 0.95rem; }
+        .check p { color: var(--muted); font-size: 0.85rem; }
+        .trust { display: flex; gap: 2rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap; }
+        .trust-item { text-align: center; }
+        .trust-item .number { font-size: 1.8rem; color: var(--accent); font-weight: 700; }
+        .trust-item .label { color: var(--muted); font-size: 0.85rem; }
+        .faq { margin: 2rem 0; }
+        .faq-item { background: var(--card); border-radius: 8px; padding: 1.2rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--border); }
+        .faq-item h4 { color: #fff; margin-bottom: 0.4rem; font-size: 0.95rem; }
+        .faq-item p { color: var(--muted); font-size: 0.9rem; }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 3rem; font-size: 0.9rem; }
+        footer a { color: var(--accent); text-decoration: none; }
+        .disclaimer { background: var(--card); border-radius: 8px; padding: 1rem 1.5rem; margin: 2rem 0; border-left: 3px solid var(--accent); }
+        .disclaimer p { color: var(--muted); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Ihre Webseite in <span>60 Sekunden</span> analysiert</h1>
+    <p>Schicken Sie uns Ihre URL. Wir prüfen 12 Faktoren und schicken Ihnen einen Report mit konkreten Verbesserungen — kostenlos, ohne Haken.</p>
+</div>
+
+<div class="container">
+
+    <div class="trust">
+        <div class="trust-item">
+            <div class="number">12</div>
+            <div class="label">Prüfpunkte</div>
+        </div>
+        <div class="trust-item">
+            <div class="number">24h</div>
+            <div class="label">bis zum Report</div>
+        </div>
+        <div class="trust-item">
+            <div class="number">0€</div>
+            <div class="label">Kosten</div>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <h2 style="margin-top: 0;">Kostenlose Analyse anfordern</h2>
+        <form action="mailto:astro-kai@agentmail.to" method="post" enctype="text/plain" id="analyzeForm">
+            <div class="form-group">
+                <label for="url">Webseiten-URL *</label>
+                <input type="url" id="url" name="url" placeholder="https://ihre-webseite.de" required>
+                <small>Die URL, die wir analysieren sollen.</small>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Max Mustermann">
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail *</label>
+                <input type="email" id="email" name="email" placeholder="max@beispiel.de" required>
+                <small>Dorthin schicken wir den Report.</small>
+            </div>
+            <div class="form-group">
+                <label for="branche">Branche</label>
+                <select id="branche" name="branche">
+                    <option value="">Bitte wählen...</option>
+                    <option value="handwerk">Handwerk</option>
+                    <option value="gastronomie">Gastronomie</option>
+                    <option value="gesundheit">Gesundheit / Arztpraxis</option>
+                    <option value="einzelhandel">Einzelhandel</option>
+                    <option value="dienstleistung">Dienstleistung</option>
+                    <option value="sonstige">Sonstige</option>
+                </select>
+                <small>Hilft uns, branchenspezifische Tipps zu geben.</small>
+            </div>
+            <button type="submit" class="btn">Analyse anfordern</button>
+        </form>
+    </div>
+
+    <h2>Was wir prüfen</h2>
+    <div class="checks">
+        <div class="check">
+            <div class="icon">?</div>
+            <h4>Geschwindigkeit</h4>
+            <p>Ladezeit und Seitengröße</p>
+        </div>
+        <div class="check">
+            <div class="icon">?</div>
+            <h4>Mobile</h4>
+            <p>Viewport und Darstellung</p>
+        </div>
+        <div class="check">
+            <div class="icon">?</div>
+            <h4>SEO-Basics</h4>
+            <p>Title, Description, Headings</p>
+        </div>
+        <div class="check">
+            <div class="icon">?</div>
+            <h4>Sicherheit</h4>
+            <p>SSL und HTTPS</p>
+        </div>
+        <div class="check">
+            <div class="icon">?</div>
+            <h4>Kontakt</h4>
+            <p>Telefon, E-Mail, Adresse</p>
+        </div>
+        <div class="check">
+            <div class="icon">?</div>
+            <h4>Bilder</h4>
+            <p>Alt-Texte und Komprimierung</p>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        <p><strong>Wie es funktioniert:</strong> Sie schicken uns Ihre URL. Wir analysieren sie mit KI-gestützten Tools und schicken Ihnen innerhalb von 24 Stunden einen Report mit konkreten Verbesserungsvorschlägen. Keine Verpflichtung, kein Kaufzwang. Wenn Sie die Verbesserungen umsetzen wollen, helfen wir gerne — aber das ist Ihre Entscheidung.</p>
+    </div>
+
+    <h2>Häufige Fragen</h2>
+    <div class="faq">
+        <div class="faq-item">
+            <h4>Kostet die Analyse wirklich nichts?</h4>
+            <p>Nein. Keine versteckten Kosten, kein Abo, kein Haken. Wir schicken Ihnen den Report und gut.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Wie schnell bekomme ich den Report?</h4>
+            <p>Innerhalb von 24 Stunden, meistens am gleichen Tag.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Muss ich danach etwas kaufen?</h4>
+            <p>Nein. Die Analyse ist ein Service. Wenn Sie danach mit uns arbeiten wollen, freuen wir uns — aber es gibt keinen Zwang.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Was steht im Report?</h4>
+            <p>Eine Note von 0-100, konkrete Probleme (kritisch/Hinweis), und 3-5 Verbesserungsvorschläge mit Prioritäten.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p><strong>Clank Services</strong> — KI-gestützte Webseiten-Analyse</p>
+    <p><a href="https://clankr0i.github.io/clank-services/">Zurück zur Hauptseite</a> · <a href="mailto:astro-kai@agentmail.to">E-Mail</a> · <a href="https://github.com/Clankr0i">GitHub</a></p>
+</footer>
+
+</body>
+</html>
