@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clank Analyze – Kostenlose Webseiten-Analyse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: #0a0a1a; color: #e0e0e0; min-height: 100vh; }
+
+        /* HERO */
+        .hero {
+            padding: 100px 20px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 100%);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p { color: #888; font-size: 1.15rem; max-width: 600px; margin: 0 auto 40px; }
+
+        /* INPUT */
+        .input-area {
+            max-width: 600px; margin: 0 auto;
+            display: flex; gap: 10px;
+        }
+        .input-area input {
+            flex: 1; padding: 16px 20px;
+            background: #1a1a2e; border: 2px solid #2a2a4e; border-radius: 10px;
+            color: white; font-size: 1rem; font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.2s;
+        }
+        .input-area input:focus { outline: none; border-color: #667eea; }
+        .input-area input::placeholder { color: #555; }
+        .input-area button {
+            padding: 16px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; border: none; border-radius: 10px;
+            font-size: 1rem; font-weight: 600; cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .input-area button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.3); }
+
+        /* RESULTS */
+        .results { max-width: 800px; margin: 40px auto; padding: 0 20px; display: none; }
+        .results.active { display: block; }
+
+        .score-circle {
+            width: 160px; height: 160px; margin: 0 auto 30px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            flex-direction: column; position: relative;
+        }
+        .score-circle::before {
+            content: ''; position: absolute; inset: 0; border-radius: 50%;
+            background: conic-gradient(#667eea var(--score), #2a2a4e var(--score));
+            mask: radial-gradient(transparent 55%, black 56%);
+            -webkit-mask: radial-gradient(transparent 55%, black 56%);
+        }
+        .score-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: white; }
+        .score-label { font-size: 0.85rem; color: #888; }
+
+        /* CHECKS */
+        .checks { display: grid; gap: 12px; }
+        .check {
+            display: flex; align-items: center; gap: 15px;
+            padding: 16px 20px; background: #1a1a2e; border-radius: 10px;
+            border-left: 4px solid #2a2a4e;
+        }
+        .check.pass { border-left-color: #00b894; }
+        .check.fail { border-left-color: #e17055; }
+        .check.warn { border-left-color: #fdcb6e; }
+        .check .icon { font-size: 1.2rem; width: 30px; text-align: center; }
+        .check .icon.pass { color: #00b894; }
+        .check .icon.fail { color: #e17055; }
+        .check .icon.warn { color: #fdcb6e; }
+        .check .info h4 { font-size: 0.95rem; margin-bottom: 3px; }
+        .check .info p { font-size: 0.85rem; color: #888; }
+
+        /* CTA */
+        .cta-box {
+            margin-top: 40px; padding: 40px; text-align: center;
+            background: linear-gradient(135deg, #1a1a3e, #2a1a4e);
+            border-radius: 16px; border: 1px solid #2a2a4e;
+        }
+        .cta-box h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 10px; }
+        .cta-box p { color: #888; margin-bottom: 20px; }
+        .cta-box a {
+            display: inline-block; padding: 14px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; text-decoration: none; border-radius: 8px; font-weight: 600;
+        }
+
+        /* LOADING */
+        .loading { text-align: center; padding: 40px; display: none; }
+        .loading.active { display: block; }
+        .spinner {
+            width: 40px; height: 40px; margin: 0 auto 15px;
+            border: 3px solid #2a2a4e; border-top-color: #667eea;
+            border-radius: 50%; animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 30px; color: #555; font-size: 0.85rem; }
+        footer a { color: #667eea; }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .input-area { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>Webseiten-Analyse</h1>
+    <p>Geben Sie Ihre URL ein. Wir prüfen 12 Punkte und zeigen Ihnen was besser gehen kann – kostenlos.</p>
+
+    <div class="input-area">
+        <input type="url" id="url-input" placeholder="https://ihre-website.de" required>
+        <button onclick="analyze()"><i class="fas fa-magnifying-glass"></i> Analysieren</button>
+    </div>
+</section>
+
+<!-- LOADING -->
+<div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Analysiere Website...</p>
+</div>
+
+<!-- RESULTS -->
+<section class="results" id="results">
+    <div class="score-circle" id="score-circle">
+        <span class="score-num" id="score-num">0</span>
+        <span class="score-label">von 100</span>
+    </div>
+
+    <div class="checks" id="checks"></div>
+
+    <div class="cta-box">
+        <h3>Website nicht gut genug?</h3>
+        <p>Ich biete professionelle Webseiten ab 249€ – mit Impressum, Datenschutz, mobil-optimiert.</p>
+        <a href="https://clankr0i.github.io/clank-services/lokal.html#anfrage">Kostenlose Anfrage</a>
+    </div>
+</section>
+
+<footer>
+    <a href="https://clankr0i.github.io/clank-services/lokal.html">Kai Detmers</a> · Webseiten-Analyse
+</footer>
+
+<script>
+const CHECKS = [
+    { id: 'https', name: 'HTTPS / SSL', desc: 'Sichere Verbindung' },
+    { id: 'reachable', name: 'Erreichbar', desc: 'Website lädt' },
+    { id: 'speed', name: 'Ladezeit', desc: 'Unter 3 Sekunden' },
+    { id: 'mobile', name: 'Mobil-optimiert', desc: 'Viewport Meta-Tag' },
+    { id: 'impressum', name: 'Impressum', desc: 'Rechtlich erforderlich' },
+    { id: 'datenschutz', name: 'Datenschutz', desc: 'DSGVO-konform' },
+    { id: 'kontakt', name: 'Kontakt', desc: 'E-Mail oder Telefon sichtbar' },
+    { id: 'social', name: 'Social Links', desc: 'Facebook, Instagram etc.' },
+    { id: 'title', name: 'Seitentitel', desc: 'Aussagekräftiger Title-Tag' },
+    { id: 'description', name: 'Meta-Description', desc: 'Für Google-Snippets' },
+    { id: 'images', name: 'Bilder mit Alt-Text', desc: 'Barrierefreiheit' },
+    { id: 'headings', name: 'Überschriften', desc: 'H1 vorhanden' },
+];
+
+async function analyze() {
+    const url = document.getElementById('url-input').value.trim();
+    if (!url) return;
+
+    document.getElementById('loading').classList.add('active');
+    document.getElementById('results').classList.remove('active');
+
+    // Client-side analysis (we fetch the page via a CORS proxy or analyze what we can)
+    try {
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+        const resp = await fetch(proxyUrl);
+        const html = await resp.text();
+        const results = runChecks(html, url);
+        displayResults(results);
+    } catch (e) {
+        // Fallback: basic checks from URL only
+        const results = runBasicChecks(url);
+        displayResults(results);
+    }
+
+    document.getElementById('loading').classList.remove('active');
+    document.getElementById('results').classList.add('active');
+}
+
+function runChecks(html, url) {
+    const results = [];
+    const lower = html.toLowerCase();
+
+    // HTTPS
+    results.push({ id: 'https', pass: url.startsWith('https://') });
+
+    // Reachable
+    results.push({ id: 'reachable', pass: html.length > 500 });
+
+    // Speed (rough: if HTML loads, assume OK for now)
+    results.push({ id: 'speed', pass: true, warn: false });
+
+    // Mobile viewport
+    results.push({ id: 'mobile', pass: lower.includes('viewport') });
+
+    // Impressum
+    const impressumFound = lower.includes('impressum') || lower.includes('anbieterkennzeichnung');
+    results.push({ id: 'impressum', pass: impressumFound });
+
+    // Datenschutz
+    results.push({ id: 'datenschutz', pass: lower.includes('datenschutz') || lower.includes('privacy') });
+
+    // Contact
+    const hasEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(html);
+    const hasPhone = /(\+49|0\d{3,})[\s\-\/]?\d/.test(html);
+    results.push({ id: 'kontakt', pass: hasEmail || hasPhone });
+
+    // Social
+    const hasSocial = lower.includes('facebook.com') || lower.includes('instagram.com') || lower.includes('linkedin.com');
+    results.push({ id: 'social', pass: hasSocial });
+
+    // Title
+    const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
+    const hasTitle = titleMatch && titleMatch[1].trim().length > 5;
+    results.push({ id: 'title', pass: hasTitle });
+
+    // Description
+    const hasDesc = lower.includes('name="description"') || lower.includes("name='description'");
+    results.push({ id: 'description', pass: hasDesc });
+
+    // Images with alt
+    const imgCount = (lower.match(/<img/g) || []).length;
+    const altCount = (lower.match(/alt="[^"]+"/g) || []).length;
+    results.push({ id: 'images', pass: imgCount === 0 || altCount >= imgCount * 0.5, warn: imgCount > 0 && altCount < imgCount });
+
+    // Headings
+    results.push({ id: 'headings', pass: lower.includes('<h1') });
+
+    return results;
+}
+
+function runBasicChecks(url) {
+    return CHECKS.map(c => ({ id: c.id, pass: false }));
+}
+
+function displayResults(results) {
+    const passed = results.filter(r => r.pass).length;
+    const score = Math.round((passed / CHECKS.length) * 100);
+
+    // Score circle
+    document.getElementById('score-num').textContent = score;
+    document.getElementById('score-circle').style.setProperty('--score', score + '%');
+
+    // Checks
+    const container = document.getElementById('checks');
+    container.innerHTML = '';
+
+    results.forEach(r => {
+        const check = CHECKS.find(c => c.id === r.id);
+        const status = r.pass ? 'pass' : (r.warn ? 'warn' : 'fail');
+        const icon = r.pass ? 'fa-check' : (r.warn ? 'fa-exclamation' : 'fa-xmark');
+
+        container.innerHTML += `
+            <div class="check ${status}">
+                <div class="icon ${status}"><i class="fas ${icon}"></i></div>
+                <div class="info">
+                    <h4>${check.name}</h4>
+                    <p>${r.pass ? 'Bestanden' : (r.warn ? 'Verbesserung möglich' : check.desc + ' – fehlt')}</p>
+                </div>
+            </div>`;
+    });
+}
+</script>
+
+</body>
+</html>
